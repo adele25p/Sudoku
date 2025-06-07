@@ -1,0 +1,40 @@
+# Ignore log files and debug logs
+logs
+*.log
+
+# Ignore dependencies
+__pycache__/
+*.py[cod]
+
+# Ignore virtual environment
+venv/
+env/
+.venv/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore test coverage reports
+coverage
+
+# Ignore local environment files
+*.local
+
+# Ignore editor-specific files
+.vscode/*
+# Allow specific VS Code settings file
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Ignore Python packaging
+*.egg-info/
+dist/
+build/
+
+# Ignore pytest cache
+.pytest_cache/
