@@ -2,11 +2,11 @@
 This module contains unit tests for the `Game` class in the Sudoku game.
 """
 from core.game import Game
-import pytest
 from core.board import Board
+import pytest
 
 # ----------------------------------------------------------------------
-# INITIALISATION ET ATTRIBUTS
+# MÉTHODE __init__
 # ----------------------------------------------------------------------
 @pytest.mark.parametrize("level", ["easy", "medium", "hard", "expert"])
 def test_init_valid_levels(level):
@@ -19,6 +19,9 @@ def test_init_invalid_level():
     with pytest.raises(ValueError):
         Game("invalid")
 
+# ----------------------------------------------------------------------
+# MÉTHODE set_level, get_level
+# ----------------------------------------------------------------------
 def test_set_get_level():
     g = Game("easy")
     g.set_level("hard")
@@ -42,7 +45,7 @@ def test_set_get_board():
         g.set_board(123)
 
 # ----------------------------------------------------------------------
-# MÉTHODES DE GESTION DU JEU
+# MÉTHODE start_game
 # ----------------------------------------------------------------------
 def test_start_game_sets_status_and_fills_board():
     g = Game("easy")
@@ -52,6 +55,9 @@ def test_start_game_sets_status_and_fills_board():
     fixed_count = sum(g.get_board().get_number(i, j) != 0 for i in range(9) for j in range(9))
     assert fixed_count > 0
 
+# ----------------------------------------------------------------------
+# MÉTHODE reset_game
+# ----------------------------------------------------------------------
 def test_reset_game_resets_board():
     g = Game("medium")
     g.start_game()
@@ -60,6 +66,9 @@ def test_reset_game_resets_board():
     # Le board doit être différent (nouvelle instance)
     assert g.get_board() is not old_board
 
+# ----------------------------------------------------------------------
+# MÉTHODE end_game
+# ----------------------------------------------------------------------
 def test_end_game_completed(monkeypatch):
     g = Game("easy")
     g.start_game()
@@ -76,7 +85,7 @@ def test_end_game_not_completed(monkeypatch):
     assert g.get_status() == "in progress"
 
 # ----------------------------------------------------------------------
-# MÉTHODES INTERNES
+# MÉTHODES INTERNES (PRIVÉES)
 # ----------------------------------------------------------------------
 def test_clear_board():
     g = Game("easy")
@@ -120,7 +129,7 @@ def test_set_level_valueerror():
         g.set_level("invalid")
 
 # ----------------------------------------------------------------------
-# INTÉGRATION
+# INTÉGRATION (cycle de vie du jeu)
 # ----------------------------------------------------------------------
 def test_game_lifecycle():
     g = Game("medium")
@@ -133,7 +142,7 @@ def test_game_lifecycle():
     assert g.get_status() == "completed"
 
 # ----------------------------------------------------------------------
-# CAS LIMITES
+# CAS LIMITES (end_game, reset_game sans start)
 # ----------------------------------------------------------------------
 def test_end_game_without_start():
     g = Game("easy")

@@ -6,7 +6,7 @@ from core.number import Number
 import pytest
 
 # ----------------------------------------------------------------------
-# INITIALISATION ET ATTRIBUTS
+# MÉTHODE __init__
 # ----------------------------------------------------------------------
 def test_board_default_init():
     b = Board()
@@ -38,7 +38,7 @@ def test_board_init_invalid_grid_type():
         Board(grid)
 
 # ----------------------------------------------------------------------
-# AFFICHAGE (MÉTHODE __str__)
+# MÉTHODE __str__
 # ----------------------------------------------------------------------
 def test_board_str_empty():
     b = Board()
@@ -55,7 +55,7 @@ def test_board_str_partial():
     assert s.count(".") == 79
 
 # ----------------------------------------------------------------------
-# ACCÈS ET MODIFICATION DES CASES
+# MÉTHODE get_number, set_number, clear_number
 # ----------------------------------------------------------------------
 def test_get_set_clear_number():
     b = Board()
@@ -94,7 +94,7 @@ def test_set_number_on_fixed_cell():
         b.clear_number(0, 0)
 
 # ----------------------------------------------------------------------
-# RÈGLES SUDOKU (ALLOWED_NUMBERS, IS_VALID)
+# MÉTHODE allowed_numbers, is_valid
 # ----------------------------------------------------------------------
 def test_allowed_numbers():
     b = Board()

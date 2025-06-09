@@ -5,7 +5,7 @@ from core.number import Number
 import pytest
 
 # ----------------------------------------------------------------------
-# INITIALISATION
+# MÉTHODE __init__
 # ----------------------------------------------------------------------
 def test_default_initialization():
     n = Number()
@@ -34,6 +34,14 @@ def test_invalid_fixed_type():
 def test_cannot_fix_zero_on_init():
     with pytest.raises(PermissionError):
         Number(0, fixed=True)
+
+# ----------------------------------------------------------------------
+# MÉTHODE __str__
+# ----------------------------------------------------------------------
+def test_str_representation():
+    assert str(Number(0)) == "."
+    for v in range(1, 10):
+        assert str(Number(v)) == str(v)
 
 # ----------------------------------------------------------------------
 # MÉTHODE set_value
@@ -73,7 +81,7 @@ def test_clear_value_fixed():
         n.clear_value()
 
 # ----------------------------------------------------------------------
-# MÉTHODE is_fixed ET lock
+# MÉTHODE is_fixed, lock
 # ----------------------------------------------------------------------
 def test_is_fixed_and_lock():
     n = Number(2)
@@ -88,13 +96,4 @@ def test_cannot_lock_zero():
     with pytest.raises(PermissionError):
         n.lock()
 
-# ----------------------------------------------------------------------
-# MÉTHODE __str__
-# ----------------------------------------------------------------------
-def test_str_representation():
-    assert str(Number(0)) == "."
-    for v in range(1, 10):
-        assert str(Number(v)) == str(v)
-
 # _is_valid (test indirect via init/set_value)
-
