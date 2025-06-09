@@ -6,7 +6,7 @@ from core.number import Number
 import pytest
 
 # ----------------------------------------------------------------------
-# MÉTHODE __init__
+# METHOD __init__
 # ----------------------------------------------------------------------
 def test_board_default_init():
     b = Board()
@@ -38,7 +38,7 @@ def test_board_init_invalid_grid_type():
         Board(grid)
 
 # ----------------------------------------------------------------------
-# MÉTHODE __str__
+# METHOD __str__
 # ----------------------------------------------------------------------
 def test_board_str_empty():
     b = Board()
@@ -55,7 +55,7 @@ def test_board_str_partial():
     assert s.count(".") == 79
 
 # ----------------------------------------------------------------------
-# MÉTHODE get_number, set_number, clear_number
+# METHOD get_number, set_number, clear_number
 # ----------------------------------------------------------------------
 def test_get_set_clear_number():
     b = Board()
@@ -94,7 +94,7 @@ def test_set_number_on_fixed_cell():
         b.clear_number(0, 0)
 
 # ----------------------------------------------------------------------
-# MÉTHODE allowed_numbers, is_valid
+# METHOD allowed_numbers, is_valid
 # ----------------------------------------------------------------------
 def test_allowed_numbers():
     b = Board()
@@ -119,7 +119,7 @@ def test_is_valid():
     assert not b.is_valid(1, 0)  # 2 already in row
 
 # ----------------------------------------------------------------------
-# MÉTHODES INTERNES (PRIVÉES)
+# INTERNAL METHODS (PRIVATE)
 # ----------------------------------------------------------------------
 def test_internal_methods():
     b = Board()
@@ -131,11 +131,11 @@ def test_internal_methods():
     assert b._get_subgrid(0, 0) == [4]
 
 # ----------------------------------------------------------------------
-# ROBUSTESSE DES MANIPULATIONS
+# ROBUSTNESS OF MANIPULATIONS
 # ----------------------------------------------------------------------
 def test_manipulate_full_and_empty_board():
     b = Board()
-    # Remplir toute la grille
+    # Fill the entire grid
     for i in range(9):
         for j in range(9):
             b.set_number(i, j, ((i*9+j)%9)+1)
@@ -144,7 +144,7 @@ def test_manipulate_full_and_empty_board():
             val = b.get_number(i, j)
             assert val is not None
             assert 1 <= val <= 9
-    # Vider toute la grille
+    # Clear the entire grid
     for i in range(9):
         for j in range(9):
             b.clear_number(i, j)

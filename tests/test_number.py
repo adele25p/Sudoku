@@ -5,7 +5,7 @@ from core.number import Number
 import pytest
 
 # ----------------------------------------------------------------------
-# MÉTHODE __init__
+# METHOD __init__
 # ----------------------------------------------------------------------
 def test_default_initialization():
     n = Number()
@@ -14,7 +14,7 @@ def test_default_initialization():
     assert str(n) == "."
 
 def test_valid_initialization():
-    for v in range(1, 10):  # 0 exclu car interdit d'être fixé
+    for v in range(1, 10):  # 0 excluded because it is forbidden to be fixed
         n = Number(v, True)
         assert n.get_value() == v
         assert n.is_fixed() is True
@@ -36,7 +36,7 @@ def test_cannot_fix_zero_on_init():
         Number(0, fixed=True)
 
 # ----------------------------------------------------------------------
-# MÉTHODE __str__
+# METHOD __str__
 # ----------------------------------------------------------------------
 def test_str_representation():
     assert str(Number(0)) == "."
@@ -44,7 +44,7 @@ def test_str_representation():
         assert str(Number(v)) == str(v)
 
 # ----------------------------------------------------------------------
-# MÉTHODE set_value
+# METHOD set_value
 # ----------------------------------------------------------------------
 def test_set_value_valid():
     n = Number()
@@ -68,7 +68,7 @@ def test_set_value_fixed():
         n.set_value(4)
 
 # ----------------------------------------------------------------------
-# MÉTHODE clear_value
+# METHOD clear_value
 # ----------------------------------------------------------------------
 def test_clear_value():
     n = Number(5)
@@ -81,7 +81,7 @@ def test_clear_value_fixed():
         n.clear_value()
 
 # ----------------------------------------------------------------------
-# MÉTHODE is_fixed, lock
+# METHOD is_fixed, lock
 # ----------------------------------------------------------------------
 def test_is_fixed_and_lock():
     n = Number(2)
@@ -96,4 +96,4 @@ def test_cannot_lock_zero():
     with pytest.raises(PermissionError):
         n.lock()
 
-# _is_valid (test indirect via init/set_value)
+# _is_valid (indirectly tested through init/set_value)

@@ -1,7 +1,7 @@
 """ Main file for the Sudoku game.
-This script serves as the entry point for the Sudoku game, allowing users to choose between a cli or a gui to play the game.
+This script serves as the entry point for the Sudoku game, allowing users to choose between a CLI or a GUI to play the game.
 It also allows users to select the difficulty level of the game.
-It uses argparse for command line argument parsing and provides a simple user interface
+It uses argparse for command-line argument parsing and provides a simple user interface.
 """
 
 # import necessary libraries
@@ -36,12 +36,12 @@ def prompt_choice(prompt, choices):
 
 def main():
     """Main function to run the Sudoku game.
-    This function handles the command line interface and user input to start the game.
+    This function handles the command-line interface and user input to start the game.
     It allows the user to choose between CLI and GUI modes, as well as the difficulty level.
     It also provides a version option to display the game's version.
     """
 
-    # Parse command line arguments using argparse
+    # Parse command-line arguments using argparse
     parser = argparse.ArgumentParser(description="Sudoku Game")
     parser.add_argument('-v', '--version', action='version', version='Sudoku Game 1.0', help='Show the version of the Sudoku game')
     parser.add_argument('--cli', action='store_true', help='Run the game in CLI mode')

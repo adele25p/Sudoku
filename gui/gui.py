@@ -1,6 +1,6 @@
 """ Sudoku GUI Module
 This module provides a graphical user interface (GUI) for playing Sudoku.
-It is part of the gui package and is designed to work with the core game logic.
+It is part of the GUI package and is designed to work with the core game logic.
 """
 
 def run_gui(level):

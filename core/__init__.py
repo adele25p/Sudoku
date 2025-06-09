@@ -1,8 +1,7 @@
 """ Core Module for Sudoku Game
 
 This module provides classes and methods for managing the Sudoku board, numbers, and game logic.
-They are essential for the functionality of the Sudoku game. 
-And used by the CLI and GUI interfaces.
+They are essential for the functionality of the Sudoku game and are used by the CLI and GUI interfaces.
 
 Structure:
     board.py     - Contains the Board class for grid management

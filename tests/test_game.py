@@ -6,7 +6,7 @@ from core.board import Board
 import pytest
 
 # ----------------------------------------------------------------------
-# MÉTHODE __init__
+# METHOD __init__
 # ----------------------------------------------------------------------
 @pytest.mark.parametrize("level", ["easy", "medium", "hard", "expert"])
 def test_init_valid_levels(level):
@@ -20,7 +20,7 @@ def test_init_invalid_level():
         Game("invalid")
 
 # ----------------------------------------------------------------------
-# MÉTHODE set_level, get_level
+# METHOD set_level, get_level
 # ----------------------------------------------------------------------
 def test_set_get_level():
     g = Game("easy")
@@ -45,34 +45,34 @@ def test_set_get_board():
         g.set_board(123)
 
 # ----------------------------------------------------------------------
-# MÉTHODE start_game
+# METHOD start_game
 # ----------------------------------------------------------------------
 def test_start_game_sets_status_and_fills_board():
     g = Game("easy")
     g.start_game()
     assert g.get_status() == "in progress"
-    # Le board doit contenir des nombres fixes
+    # The board must contain fixed numbers
     fixed_count = sum(g.get_board().get_number(i, j) != 0 for i in range(9) for j in range(9))
     assert fixed_count > 0
 
 # ----------------------------------------------------------------------
-# MÉTHODE reset_game
+# METHOD reset_game
 # ----------------------------------------------------------------------
 def test_reset_game_resets_board():
     g = Game("medium")
     g.start_game()
     old_board = g.get_board()
     g.reset_game()
-    # Le board doit être différent (nouvelle instance)
+    # The board must be different (new instance)
     assert g.get_board() is not old_board
 
 # ----------------------------------------------------------------------
-# MÉTHODE end_game
+# METHOD end_game
 # ----------------------------------------------------------------------
 def test_end_game_completed(monkeypatch):
     g = Game("easy")
     g.start_game()
-    # Monkeypatch _is_board_valid pour simuler une victoire
+    # Monkeypatch _is_board_valid to simulate a win
     g._is_board_valid = lambda: True
     g.end_game()
     assert g.get_status() == "completed"
@@ -85,7 +85,7 @@ def test_end_game_not_completed(monkeypatch):
     assert g.get_status() == "in progress"
 
 # ----------------------------------------------------------------------
-# MÉTHODES INTERNES (PRIVÉES)
+# INTERNAL METHODS (PRIVATE)
 # ----------------------------------------------------------------------
 def test_clear_board():
     g = Game("easy")
@@ -96,7 +96,7 @@ def test_clear_board():
 def test_is_board_valid_true():
     g = Game("easy")
     g.start_game()
-    # Remplir la grille avec une solution valide
+    # Fill the grid with a valid solution
     for i in range(9):
         for j in range(9):
             g._board.set_number(i, j, ((i*3 + i//3 + j) % 9) + 1)
@@ -105,13 +105,13 @@ def test_is_board_valid_true():
 def test_is_board_valid_false():
     g = Game("easy")
     g.start_game()
-    # Mettre deux fois le même nombre dans une ligne
+    # Put the same number twice in a row
     g._board.set_number(0, 0, 1)
     g._board.set_number(0, 1, 1)
     assert g._is_board_valid() is False
 
 # ----------------------------------------------------------------------
-# ROBUSTESSE ET ERREURS
+# ROBUSTNESS AND ERRORS
 # ----------------------------------------------------------------------
 def test_set_board_typeerror():
     g = Game("easy")
@@ -129,7 +129,7 @@ def test_set_level_valueerror():
         g.set_level("invalid")
 
 # ----------------------------------------------------------------------
-# INTÉGRATION (cycle de vie du jeu)
+# INTEGRATION (game lifecycle)
 # ----------------------------------------------------------------------
 def test_game_lifecycle():
     g = Game("medium")
@@ -142,7 +142,7 @@ def test_game_lifecycle():
     assert g.get_status() == "completed"
 
 # ----------------------------------------------------------------------
-# CAS LIMITES (end_game, reset_game sans start)
+# EDGE CASES (end_game, reset_game without start)
 # ----------------------------------------------------------------------
 def test_end_game_without_start():
     g = Game("easy")

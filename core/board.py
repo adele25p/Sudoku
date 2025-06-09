@@ -27,9 +27,9 @@ class Board:
 
     def __str__(self):
         """ Display the Sudoku board in a readable format.
-        The zeroes in the grid are represented as dots (.) for better readability.
+        Zeros in the grid are represented as dots (.) for better readability.
         Returns:
-            str: A string representation of the Sudoku board, with rows and columns clearly delineated. (e.g., with spaces or newlines).
+            str: A string representation of the Sudoku board, with rows and columns clearly delineated (e.g., with spaces or newlines).
         """
         board_str = ""
         for row in self._grid:

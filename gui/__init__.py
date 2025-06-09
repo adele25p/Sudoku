@@ -1,6 +1,6 @@
-""" Cli Module for Sudoku Game
+""" GUI Module for Sudoku Game
 
-This module provides command-line interface functionality for the Sudoku game, allowing users to interact with the game through terminal commands.
+This module provides graphical user interface functionality for the Sudoku game, allowing users to interact with the game visually.
 
 Structure:
     gui.py      - Contains the main GUI application logic

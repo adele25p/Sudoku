@@ -1,6 +1,6 @@
 """ Sudoku CLI Module
 This module provides a command-line interface (CLI) for playing Sudoku.
-IT is part of the cli package and allows users to interact with the game through terminal commands.
+It is part of the cli package and allows users to interact with the game through terminal commands.
 """
 
 def run_cli(level):
